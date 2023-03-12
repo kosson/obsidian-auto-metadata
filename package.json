@@ -1,0 +1,19 @@
+{
+  "name": "obsidianautometa",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "front-matter": "^4.0.2",
+    "globby": "^11.0.4",
+    "js-yaml": "^4.1.0",
+    "markdown-it": "^13.0.1",
+    "nodemon": "^2.0.15"
+  }
+}
