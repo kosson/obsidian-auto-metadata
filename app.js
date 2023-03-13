@@ -267,7 +267,14 @@ try {
                 lineWidth: -1
             });
 
-            let rebuiltMd = '---\n' + ymlMeta + '---\n' + ra; // reconstruiește fișierul
+            // dacă dorești să ștergi metadatele din motive de eroare umană la completarea anterioară sau din alte motive
+            // setează `cleanMeta` cu `true`
+            let cleanMeta = false, rebuiltMd = '';
+            if (cleanMeta) {
+                rebuiltMd = ra; // reconstruiește fișierul fără metadate
+            } else {
+                rebuiltMd = '---\n' + ymlMeta + '---\n' + ra; // reconstruiește fișierul
+            }
 
             // console.log(`Calea pe care o prelucrez este ${note_path}`);
             let filename = path.basename(note_path);

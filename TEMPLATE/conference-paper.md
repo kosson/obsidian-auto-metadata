@@ -1,7 +1,7 @@
 ---
 alias: 'ISWC'
 type: 'paper'
-event: 'ISWC 200'
+event: 'ISWC 2003'
 year: '2003'
 partof: ''
 tags:
