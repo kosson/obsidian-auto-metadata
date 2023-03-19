@@ -28,6 +28,7 @@ author:
  - 'Zhen-jie Wang'
  - 'Huan-ye Sheng'
  - 'Peng Ding'
+abstract: ''
 ---
 # A Q-Based Architecture for Semantic Information Interoperability on Semantic Web
 [[Zhen-jie Wang]], [[Huan-ye Sheng]], [[Peng Ding]]

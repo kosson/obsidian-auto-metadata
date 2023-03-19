@@ -169,7 +169,7 @@ try {
                             }
                             acc['structure'][idx] = {
                                 idx: idx,
-                                partOf: {tag: acc?.components[idxDecr]['tag'], idx: idxDecr},
+                                partOf: {tag: acc?.components[idxDecr]['tag'], idx: idxDecr}, // indică care element html este părintele.
                                 type: arr[idx]['type']
                             };
 
@@ -243,6 +243,8 @@ try {
                         if (objmetaval.meta === "authors") {
                             let cleanAuthors = objmetaval.content.replace(/\[\[|\]\]/g, '');
                             metadataObj.author = cleanAuthors.split(', ');
+                        } else if (objmetaval.meta === "abstract") {
+                            metadataObj.abstract = objmetaval.content.replace(/\[\[|\]\]/g, '');
                         }
                         break;
                     default:
@@ -258,10 +260,17 @@ try {
             let ra = md.render(noteMd.body.toString())
                 .replace(/<h1>/g, '# ')
                 .replace(/<\/h1>/g, '')
-                .replace(/<p>/g, '')
-                .replace(/<\/p>/g, '\n');
+                .replace(/<p>/g, '\n')
+                .replace(/<\/p>/g, '')
+                .replace(/<ol>/g, '')
+                .replace(/<\/ol>/g, '')                
+                .replace(/<li>/g, '- ')
+                .replace(/<\/li>/g, '')                
+                .replace(/<ul>/g, '')
+                .replace(/<\/ul>/g, '')
+                .replace(/<br>/g, '\n');
 
-            // CONTROL WITH ORIG LIB used by mdify!!! m-a ars rău; mdify bagă caractere aiurea: ">-"
+            // m-a ars rău cu mdify bagă caractere aiurea: ">-"
             let ymlMeta = yaml.dump(metadataObj, {
                 skipInvalid: true,
                 lineWidth: -1
