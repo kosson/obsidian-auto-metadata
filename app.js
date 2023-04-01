@@ -63,7 +63,7 @@ try {
         return md.parseInline(JSON.stringify(templateMd.attributes), {}); // Obții YAML-ul în format JS Obiect
     };
 
-    let templateFile = './TEMPLATE/conference-paper.md'; // calea template-ului
+    let templateFile = './TEMPLATE/template.md'; // calea template-ului
     /**
      * Funcția va prelucra fișierul cu extensia .md din calea pasată
      * @param {String} path O cale a fișierului .md extrasă de globby la parsarea structurii de subdirectoare din ./DOCS
