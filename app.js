@@ -214,7 +214,7 @@ try {
                         enumerable: true,
                         configurable: true
                     });
-                    // dacă în câmpurile meta cu care a venit fișierul este câmpul din template, valoarea celui existent va prima asupra celeia din template
+                    // dacă în câmpurile meta cu care a venit fișierul este câmpul din template, valoarea celui existent va prima asupra celei din template
                     
                 } else {
                     metadataObj[fieldMeta] = tmplmeta[fieldMeta] || ''; // dacă fișierul nu are în metadate câmpul căutat, se va completa cu valorile din template
@@ -229,8 +229,6 @@ try {
                     case 'h1':                        
                         if (objmetaval?.meta === "title") {
                             let titleStr = objmetaval.content.trim();
-                            // console.log(`Titlurile cu probleme? ${titleStr}`);
-
                             Object.defineProperty(metadataObj, 'title', {
                                 value: titleStr,
                                 writable: true,
@@ -239,10 +237,33 @@ try {
                             });
                         }                        
                         break;
+                    case 'h2':                        
+                        if (objmetaval?.meta === "title") {
+                            let titleStr = objmetaval.content.trim();
+                            Object.defineProperty(metadataObj, 'title', {
+                                value: titleStr,
+                                writable: true,
+                                enumerable: true,
+                                configurable: true
+                            });
+                        }                        
+                        break;
+                    case 'h3':                        
+                        if (objmetaval?.meta === "title") {
+                            let titleStr = objmetaval.content.trim();
+                            Object.defineProperty(metadataObj, 'title', {
+                                value: titleStr,
+                                writable: true,
+                                enumerable: true,
+                                configurable: true
+                            });
+                        }                        
+                        break;                                     
                     case 'p':
                         if (objmetaval.meta === "authors") {
                             let cleanAuthors = objmetaval.content.replace(/\[\[|\]\]/g, '');
-                            metadataObj.author = cleanAuthors.split(', ');
+                            let trimmedAuthors = cleanAuthors.split(', ').map((author) => author.trim());
+                            metadataObj.author = trimmedAuthors;
                         } else if (objmetaval.meta === "abstract") {
                             metadataObj.abstract = objmetaval.content.replace(/\[\[|\]\]/g, '');
                         }
@@ -259,7 +280,11 @@ try {
 
             let ra = md.render(noteMd.body.toString())
                 .replace(/<h1>/g, '# ')
+                .replace(/<h2>/g, '## ')
+                .replace(/<h3>/g, '### ')
                 .replace(/<\/h1>/g, '')
+                .replace(/<\/h2>/g, '')
+                .replace(/<\/h3>/g, '')
                 .replace(/<p>/g, '\n')
                 .replace(/<\/p>/g, '')
                 .replace(/<ol>/g, '')

@@ -1,14 +1,17 @@
 ---
-type: article
-alias: 'IJDL 1997'
-journal: 'International Journal on Digital Libraries'
-year: '1997'
-volume: ''
-number: ''
-tags: 
- - '#IJDL'
- - '#1997'
+alias: 'KEOD'
+type: 'article'
+event: 'International Conference on Knowledge Engineering and Ontology Development'
+year: '2022'
+partof: ''
+tags:
+ - '#keod'
+ - '#2022'
+ - '#Valletta'
+ - '#Malta'
 title: ''
+resources:
+ - ''
 author:
  - ''
 abstract: ''
